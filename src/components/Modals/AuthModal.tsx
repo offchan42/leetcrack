@@ -1,6 +1,6 @@
 // import { authModalState } from "@/atoms/authModalAtom";
 import React, { useEffect } from "react";
-// import { IoClose } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 // import Login from "./Login";
 // import ResetPassword from "./ResetPassword";
 // import Signup from "./Signup";
@@ -26,8 +26,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
 								className='bg-transparent  rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-800 hover:text-white text-white'
 								// onClick={closeModal}
 							>
-								{/* <IoClose className='h-5 w-5' /> */}
-								X
+								<IoClose className='h-5 w-5' />
 							</button>
 						</div>
 						{/* {authModal.type === "login" ? <Login /> : authModal.type === "register" ? <Signup /> : <ResetPassword />} */}
