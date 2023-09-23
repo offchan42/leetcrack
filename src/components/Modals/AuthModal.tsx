@@ -1,6 +1,8 @@
 // import { authModalState } from "@/atoms/authModalAtom";
 import React, { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
+import Login from "./Login";
+import Signup from "./Signup";
 // import Login from "./Login";
 // import ResetPassword from "./ResetPassword";
 // import Signup from "./Signup";
@@ -30,6 +32,8 @@ const AuthModal: React.FC<AuthModalProps> = () => {
 							</button>
 						</div>
 						{/* {authModal.type === "login" ? <Login /> : authModal.type === "register" ? <Signup /> : <ResetPassword />} */}
+						{/* <Login /> */}
+						<Signup />
 					</div>
 				</div>
 			</div>
