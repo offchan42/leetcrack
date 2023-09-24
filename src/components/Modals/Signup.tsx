@@ -1,62 +1,69 @@
-import { authModalState } from "@/atoms/authModalAtom";
-// import { auth, firestore } from "@/firebase/firebase";
-// import { useEffect, useState } from "react";
-import { useSetRecoilState } from "recoil";
-// import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-// import { useRouter } from "next/router";
+import { authModalState } from '@/atoms/authModalAtom'
+import { auth, firestore } from '@/firebase/firebase'
+import { useEffect, useState } from 'react'
+import { useSetRecoilState } from 'recoil'
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useRouter } from 'next/router'
 // import { doc, setDoc } from "firebase/firestore";
 // import { toast } from "react-toastify";
 
 type SignupProps = {}
 
 const Signup: React.FC<SignupProps> = () => {
-  const setAuthModalState = useSetRecoilState(authModalState);
+  const setAuthModalState = useSetRecoilState(authModalState)
   const handleClick = () => {
-  	setAuthModalState((prev) => ({ ...prev, type: "login" }));
-  };
-  // const [inputs, setInputs] = useState({ email: "", displayName: "", password: "" });
-  // const router = useRouter();
-  // const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
-  // const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-  // 	setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  // };
+    setAuthModalState((prev) => ({ ...prev, type: 'login' }))
+  }
+  const [inputs, setInputs] = useState({
+    email: '',
+    displayName: '',
+    password: '',
+  })
+  const router = useRouter()
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth)
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
 
-  // const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
-  // 	e.preventDefault();
-  // 	if (!inputs.email || !inputs.password || !inputs.displayName) return alert("Please fill all fields");
-  // 	try {
-  // 		toast.loading("Creating your account", { position: "top-center", toastId: "loadingToast" });
-  // 		const newUser = await createUserWithEmailAndPassword(inputs.email, inputs.password);
-  // 		if (!newUser) return;
-  // 		const userData = {
-  // 			uid: newUser.user.uid,
-  // 			email: newUser.user.email,
-  // 			displayName: inputs.displayName,
-  // 			createdAt: Date.now(),
-  // 			updatedAt: Date.now(),
-  // 			likedProblems: [],
-  // 			dislikedProblems: [],
-  // 			solvedProblems: [],
-  // 			starredProblems: [],
-  // 		};
-  // 		await setDoc(doc(firestore, "users", newUser.user.uid), userData);
-  // 		router.push("/");
-  // 	} catch (error: any) {
-  // 		toast.error(error.message, { position: "top-center" });
-  // 	} finally {
-  // 		toast.dismiss("loadingToast");
-  // 	}
-  // };
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!inputs.email || !inputs.password || !inputs.displayName)
+      return alert('Please fill all fields')
+    try {
+      // toast.loading("Creating your account", { position: "top-center", toastId: "loadingToast" });
+      const newUser = await createUserWithEmailAndPassword(
+        inputs.email,
+        inputs.password
+      )
+      if (!newUser) return
+      // const userData = {
+      // 	uid: newUser.user.uid,
+      // 	email: newUser.user.email,
+      // 	displayName: inputs.displayName,
+      // 	createdAt: Date.now(),
+      // 	updatedAt: Date.now(),
+      // 	likedProblems: [],
+      // 	dislikedProblems: [],
+      // 	solvedProblems: [],
+      // 	starredProblems: [],
+      // };
+      // await setDoc(doc(firestore, "users", newUser.user.uid), userData);
+      router.push('/')
+    } catch (error: any) {
+      // toast.error(error.message, { position: "top-center" });
+      alert(error.message)
+    } finally {
+      // toast.dismiss("loadingToast");
+    }
+  }
 
   // useEffect(() => {
   // 	if (error) alert(error.message);
   // }, [error]);
 
   return (
-    <form
-      className="space-y-6 px-6 pb-4"
-      // onSubmit={handleRegister}
-    >
+    <form className="space-y-6 px-6 pb-4" onSubmit={handleRegister}>
       <h3 className="text-xl font-medium text-white">Register to LeetClone</h3>
       <div>
         <label
@@ -66,7 +73,7 @@ const Signup: React.FC<SignupProps> = () => {
           Email
         </label>
         <input
-          // onChange={handleChangeInput}
+          onChange={handleChangeInput}
           type="email"
           name="email"
           id="email"
@@ -85,7 +92,7 @@ const Signup: React.FC<SignupProps> = () => {
           Display Name
         </label>
         <input
-          // onChange={handleChangeInput}
+          onChange={handleChangeInput}
           type="displayName"
           name="displayName"
           id="displayName"
@@ -104,7 +111,7 @@ const Signup: React.FC<SignupProps> = () => {
           Password
         </label>
         <input
-          // onChange={handleChangeInput}
+          onChange={handleChangeInput}
           type="password"
           name="password"
           id="password"
@@ -123,7 +130,7 @@ const Signup: React.FC<SignupProps> = () => {
         "
       >
         {/* {loading ? 'Registering...' : 'Register'} */}
-				Register
+        Register
       </button>
 
       <div className="text-sm font-medium text-gray-300">
