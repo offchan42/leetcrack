@@ -129,8 +129,7 @@ const Signup: React.FC<SignupProps> = () => {
             text-sm px-5 py-2.5 text-center bg-brand-orange hover:bg-brand-orange-s
         "
       >
-        {/* {loading ? 'Registering...' : 'Register'} */}
-        Register
+        {loading ? 'Registering...' : 'Register'}
       </button>
 
       <div className="text-sm font-medium text-gray-300">
