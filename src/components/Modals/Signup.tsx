@@ -1,7 +1,7 @@
-// import { authModalState } from "@/atoms/authModalAtom";
+import { authModalState } from "@/atoms/authModalAtom";
 // import { auth, firestore } from "@/firebase/firebase";
 // import { useEffect, useState } from "react";
-// import { useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 // import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 // import { useRouter } from "next/router";
 // import { doc, setDoc } from "firebase/firestore";
@@ -10,10 +10,10 @@
 type SignupProps = {}
 
 const Signup: React.FC<SignupProps> = () => {
-  // const setAuthModalState = useSetRecoilState(authModalState);
-  // const handleClick = () => {
-  // 	setAuthModalState((prev) => ({ ...prev, type: "login" }));
-  // };
+  const setAuthModalState = useSetRecoilState(authModalState);
+  const handleClick = () => {
+  	setAuthModalState((prev) => ({ ...prev, type: "login" }));
+  };
   // const [inputs, setInputs] = useState({ email: "", displayName: "", password: "" });
   // const router = useRouter();
   // const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
@@ -131,7 +131,7 @@ const Signup: React.FC<SignupProps> = () => {
         <a
           href="#"
           className="text-blue-700 hover:underline"
-          // onClick={handleClick}
+          onClick={handleClick}
         >
           Log In
         </a>
